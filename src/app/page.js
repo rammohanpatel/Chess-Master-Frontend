@@ -1,13 +1,16 @@
 "use client";
-import Chessboard from "chessboardjsx";
 import { useEffect, useState } from "react";
 //import { io } from "socket.io-client";
 import { Chess } from "chess.js";
 import socket from '../components/socket'; // Import the socket connection
+import dynamic from 'next/dynamic';
 
 // Initialize the socket connection
 // const socket = io("http://localhost:3001/");
 //const socket = io("https://chess-master-backend.vercel.app/");
+
+const Chessboard = dynamic(() => import("chessboardjsx"), { ssr: false });
+
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
